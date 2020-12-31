@@ -62,3 +62,22 @@ test('diag should win', () => {
   b.setMove('O', { row: 0, column: 2 });
   expect(b.checkWin()).toBe('O');
 });
+
+
+test('partially empty board is not full', () => {
+  const b = new Board();
+  b.setMove('O', { row: 2, column: 0 });
+  b.setMove('X', { row: 1, column: 1 });
+  b.setMove('O', { row: 0, column: 2 });
+  expect(b.checkFull()).toBe(false);
+});
+
+test('full board is full', () => {
+  const b = new Board();
+  for (let row = 0; row < 3; row += 1) {
+    for (let column = 0; column < 3; column += 1) {
+      b.setMove('X', { row, column })
+    }
+  }
+  expect(b.checkFull()).toBe(true);
+});

@@ -34,12 +34,16 @@ async function main() {
     const board = new Board();
     let currPlayer = Player.X;
     while (true) {
-      board.displayBoard();
+
       const move = await getPlayerInput(currPlayer, board);
       board.setMove(currPlayer, move);
       board.displayBoard();
       result = board.checkWin();
       if (board.checkWin()) break;
+      if (board.checkFull()) {
+        console.log('Game was a Tie');
+        return;
+      }
       currPlayer = (currPlayer == Player.X) ? Player.O : Player.X;
     }
     console.log(`Player ${currPlayer} wins!`);

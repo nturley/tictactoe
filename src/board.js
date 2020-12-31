@@ -67,7 +67,11 @@ exports.Board = class Board {
   }
 
   checkWin() {
-    let winConditions = [this.winCol(), this.winRow(), this.winUpDiag(), this.winDownDiag()]
+    const winConditions = [this.winCol(), this.winRow(), this.winUpDiag(), this.winDownDiag()]
     return winConditions.find(s => s !== ' ');
+  }
+
+  checkFull() {
+    return !this.squares.some(row => row.some(p => p == ' '));
   }
 }
