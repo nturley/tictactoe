@@ -36,7 +36,7 @@ exports.Board = class Board {
       const r0 = this.squares[0][col];
       if (r0 !== this.squares[1][col]) continue;
       if (r0 !== this.squares[2][col]) continue;
-      return r0;
+      if (r0 !== ' ') return r0;
     }
     return ' ';
   }
@@ -47,7 +47,7 @@ exports.Board = class Board {
       const c0 = this.squares[row][0];
       if (c0 !== this.squares[row][1]) continue;
       if (c0 !== this.squares[row][2]) continue;
-      return c0;
+      if (c0 !== ' ') return c0;
     }
     return ' ';
   }
