@@ -3,7 +3,8 @@ const { Board } = require('./board');
 
 const Player = {
   X: 'X',
-  O: 'O'
+  O: 'O',
+  Empty: ' '
 }
 
 async function getPlayerInput(player, board) {
@@ -31,10 +32,17 @@ async function getPlayerInput(player, board) {
 async function main() {
   try {
     const board = new Board();
-    board.displayBoard();
-    const move = await getPlayerInput(Player.X, board);
-    board.setMove(Player.X, move);
-    board.displayBoard();
+    let currPlayer = Player.X;
+    while (true) {
+      board.displayBoard();
+      const move = await getPlayerInput(currPlayer, board);
+      board.setMove(currPlayer, move);
+      board.displayBoard();
+      result = board.checkWin();
+      if (board.checkWin()) break;
+      currPlayer = (currPlayer == Player.X) ? Player.O : Player.X;
+    }
+    console.log(`Player ${currPlayer} wins!`);
   } catch (e) {
     console.log(e);
   }
