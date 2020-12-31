@@ -1,0 +1,23 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "simple CLI tic tac toe",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nturley/tictactoe.git"
+  },
+  "author": "Neil Turley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nturley/tictactoe/issues"
+  },
+  "homepage": "https://github.com/nturley/tictactoe#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
