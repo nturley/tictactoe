@@ -1,9 +1,9 @@
 exports.Board = class Board {
   constructor() {
     this.squares = [
-      ['', '', ''],
-      ['', '', ''],
-      ['', '', '']
+      [' ', ' ', ' '],
+      [' ', ' ', ' '],
+      [' ', ' ', ' ']
     ];
   }
 
@@ -17,7 +17,16 @@ exports.Board = class Board {
     // each row is the same length
     if (move.column >= this.squares[0].length) return outOfBoundsMessage;
     const occupiedMessage = 'position is already occupied';
-    if (this.squares[move.row][move.column] !== '') return occupiedMessage;
+    // space is empty
+    if (this.squares[move.row][move.column] !== ' ') return occupiedMessage;
     return false;
+  }
+
+  displayBoard() {
+    console.log(this.squares.map(row => row.join('|')).join('\n'))
+  }
+
+  setMove(player, move) {
+    this.squares[move.row][move.column] = player;
   }
 }

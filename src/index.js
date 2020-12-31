@@ -31,8 +31,10 @@ async function getPlayerInput(player, board) {
 async function main() {
   try {
     const board = new Board();
+    board.displayBoard();
     const move = await getPlayerInput(Player.X, board);
-
+    board.setMove(Player.X, move);
+    board.displayBoard();
   } catch (e) {
     console.log(e);
   }
